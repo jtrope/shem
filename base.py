@@ -2,6 +2,10 @@ import logging
 import re
 
 class Base(object):
+  def __init__(self):
+    self.prefixes = ["Dr.", "Mrs.", "Mr.", "Ms.", "Miss"]
+    self.suffixes = ["DDS", "Jr.", "Sr.", "DVM", "PhD", "MD", "V", "IV", "I", "II", "III"]
+
   def get_file_data(self, file_path):
     file = self.open_file(file_path)
     """Add non blank lines to array"""
