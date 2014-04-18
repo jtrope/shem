@@ -6,7 +6,7 @@ import ipdb
 
 class Name(Base):
     def __init__(self, file_name="full_names.txt"):
-        super(Name, self).__init__
+        super(Name, self).__init__()
         self.names = self.get_file_data(file_name)
 
     def name(self):
