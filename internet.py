@@ -1,4 +1,5 @@
 from name import Name
+import random
 import logging
 
 class Internet(Name):
@@ -11,4 +12,9 @@ class Internet(Name):
         super(Name, self).__init__()
 
     def email(self, name=None):
-        pass
+        # TODO: define a lambda for cleaning up name to be passed in both conditionals
+        if name:
+            valid_names = []
+        else:
+            valid_names = [ name.lower() for  name in self.name().split(" ") if name not in (self.prefixes + self.suffixes)]
+        return ".".join( valid_names ).replace("'", "") + random.choice(self.email_suffixes)
