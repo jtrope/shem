@@ -20,6 +20,6 @@ class Base(object):
     try:
       f = open("data/"+file_path, "r")
     except IOError:
-      logging.error("Could note find file.")
+      logging.error("Could not find file.")
     else:
       return f
