@@ -7,11 +7,11 @@ class Internet(Name):
         self.email_suffixes = self.get_file_data("email_suffixes.txt")
 
     def email(self, name=None):
-        email_suffix = self.email_suffixes[ self.generate_rand_num(self.email_suffixes) ]
+        email_suffix = random.choice(self.email_suffixes)
         if name:
             return self.get_email_prefix(name) + email_suffix
         else:
-            return self.get_email_prefix(self.names[ self.generate_rand_num(self.names) ]) + email_suffix
+            return self.get_email_prefix(random.choice(self.names)) + email_suffix
 
     def domain_name(self):
         return random.choice(self.email_suffixes)[1::]
@@ -32,6 +32,17 @@ class Internet(Name):
         dot_idx = domain_suffix.index(".")
         return domain_suffix[dot_idx+1::]
 
+    def free_email(self):
+        free_emails = ["@gmail", "@yahoo", "@aol", "@hotmail"]
+        return self.get_email_prefix(random.choice(self.names)) + random.choice(free_emails)
+
+    def user_name(self):
+        return self.get_email_prefix(random.choice(self.names))
+
     def get_email_prefix(self, name):
+        """takes a name and turns it into email format.
+        Args: the string representing the name
+        Returns: the reversed string seperated by .
+        """
         valid_names = [n for n in name.split() if not n in (self.suffixes + self.prefixes)]
         return ".".join(valid_names[::-1]).lower()

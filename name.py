@@ -15,7 +15,7 @@ class Name(Base):
 
     def first_name(self):
         name_components = self.split_name()
-        """ filter out nonsensical names such as Dr, Mrs, etc."""
+        # filter out nonsensical names such as Dr, Mrs, etc.
         return [component for component in name_components if not component in self.prefixes][0]
 
     def suffix(self):
