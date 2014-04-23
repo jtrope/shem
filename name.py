@@ -1,12 +1,12 @@
 from base import Base
-import random
 import logging
 import re
 import ipdb
 
 class Name(Base):
     def __init__(self, file_name="full_names.txt"):
-        super(Name, self).__init__()
+        self.prefixes = ["Dr.", "Mrs.", "Mr.", "Ms.", "Miss"]
+        self.suffixes = ["DDS", "Jr.", "Sr.", "DVM", "PhD", "MD", "V", "IV", "I", "II", "III"]
         self.names = self.get_file_data(file_name)
 
     def name(self):
@@ -32,8 +32,3 @@ class Name(Base):
 
     def split_name(self):
         return self.name().split()
-
-    def generate_rand_num(self, array):
-        """Generates a random integer in the range of 0 and
-        the length of the parameter - 1)"""
-        return random.randint(0, len(array) - 1)

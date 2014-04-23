@@ -1,10 +1,9 @@
 import logging
 import re
+import random
 
 class Base(object):
-  def __init__(self):
-    self.prefixes = ["Dr.", "Mrs.", "Mr.", "Ms.", "Miss"]
-    self.suffixes = ["DDS", "Jr.", "Sr.", "DVM", "PhD", "MD", "V", "IV", "I", "II", "III"]
+
   def get_file_data(self, file_path):
     file = self.open_file(file_path)
     """return non blank names from file"""
@@ -22,3 +21,8 @@ class Base(object):
       logging.error("Could not find file.")
     else:
       return f
+
+  def generate_rand_num(self, array):
+    """Generates a random integer in the range of 0 and
+    the length of the parameter - 1)"""
+    return random.randint(0, len(array) - 1)

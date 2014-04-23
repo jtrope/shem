@@ -1,6 +1,5 @@
 from name import Name
 import random
-import logging
 
 class Internet(Name):
     def __init__(self):
@@ -15,4 +14,5 @@ class Internet(Name):
             return self.get_email_prefix(self.names[ self.generate_rand_num(self.names) ]) + email_suffix
 
     def get_email_prefix(self, name):
-        return ".".join(name.lower().split()[::-1])
+        valid_names = [ n for n in name.split() if not n in (self.suffixes + self.prefixes) ]
+        return ".".join(valid_names[::-1]).lower()
