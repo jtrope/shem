@@ -1,4 +1,5 @@
 from name import Name
+import random
 import logging
 
 class Internet(Name):
