@@ -13,6 +13,25 @@ class Internet(Name):
         else:
             return self.get_email_prefix(self.names[ self.generate_rand_num(self.names) ]) + email_suffix
 
+    def domain_name(self):
+        return random.choice(self.email_suffixes)[1::]
+
+    def domain_word(self):
+        """return the company name component of an email address"""
+        domain_word = ""
+        for char in self.domain_name():
+            if char != ".":
+                domain_word += char
+            else:
+                break
+        return domain_word
+
+    def domain_suffix(self):
+        """example return values: com, info, biz"""
+        domain_suffix = random.choice(self.email_suffixes)
+        dot_idx = domain_suffix.index(".")
+        return domain_suffix[dot_idx+1::]
+
     def get_email_prefix(self, name):
-        valid_names = [ n for n in name.split() if not n in (self.suffixes + self.prefixes) ]
+        valid_names = [n for n in name.split() if not n in (self.suffixes + self.prefixes)]
         return ".".join(valid_names[::-1]).lower()
