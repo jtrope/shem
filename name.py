@@ -1,13 +1,11 @@
 from base import Base
-import logging
 import re
-import ipdb
 
 class Name(Base):
-    def __init__(self, file_name="full_names.txt"):
+    def __init__(self):
         self.prefixes = ["Dr.", "Mrs.", "Mr.", "Ms.", "Miss"]
         self.suffixes = ["DDS", "Jr.", "Sr.", "DVM", "PhD", "MD", "V", "IV", "I", "II", "III"]
-        self.names = self.get_file_data(file_name)
+        self.names = self.get_file_data("full_names.txt")
 
     def name(self):
         """ return a random full name from data """

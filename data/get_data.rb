@@ -16,6 +16,16 @@ def write_file(file_name)
       data = Faker::Name.name
     elsif file_name == "email_suffixes"
       data = Faker::Internet.email.match(/@.+/)[0]
+    elsif file_name == "cities"
+      data = Faker::Address.city
+    elsif file_name == "street_addresses"
+      data = Faker::Address.street_address
+    elsif file_name == "us_states"
+      data = Faker::Address.us_state
+    elsif file_name == "us_states_abbr"
+      data = Faker::Address.us_state_abbr
+    else
+      puts "#{file_name} does not exist."
     end
 
     if seen_data[data].nil?
