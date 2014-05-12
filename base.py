@@ -1,12 +1,10 @@
 import logging
 import re
-import random
 
 class Base(object):
-
   def get_file_data(self, file_path):
+    """returns list of non blank names from file"""
     file = self.open_file(file_path)
-    """return non blank names from file"""
     data = []
     for line in file:
       if re.match(".+", line):
@@ -14,15 +12,11 @@ class Base(object):
     file.close()
     return data
 
-  def open_file(self, file_path):
+  def open_file(self, file_name):
+    """tries to open and return a file in the "./data" directory"""
     try:
-      f = open("data/"+file_path, "r")
+      f = open("data/"+file_name, "r")
     except IOError:
-      logging.error("Could not find file.")
+      logging.error("Could not find file %s." % (file_name))
     else:
       return f
-
-  def generate_rand_num(self, array):
-    """Generates a random integer in the range of 0 and
-    the length of the parameter - 1)"""
-    return random.randint(0, len(array) - 1)
