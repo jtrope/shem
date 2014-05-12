@@ -5,8 +5,8 @@ files_to_write = [
   "email_suffixes",
   "cities",
   "street_addresses",
-  # "us_states",
-  #"us_states_abbr"
+  "states",
+  "states_abbr"
 ]
 
 file_generator(files_to_write)
