@@ -3,10 +3,10 @@ import re
 import random
 
 class Name(Base):
-    def __init__(self, file_name="full_names.txt"):
+    def __init__(self):
         self.prefixes = ["Dr.", "Mrs.", "Mr.", "Ms.", "Miss"]
         self.suffixes = ["DDS", "Jr.", "Sr.", "DVM", "PhD", "MD", "V", "IV", "I", "II", "III"]
-        self.names = self.get_file_data(file_name)
+        self.names = self.get_file_data("full_names.txt")
 
     def first_name(self):
         """filters out prefixes and returns first name"""

@@ -3,15 +3,16 @@ import random
 
 class Internet(Name):
     def __init__(self):
-        super(Internet, self).__init__()
+        Name.__init__(self)
         self.email_suffixes = self.get_file_data("email_suffixes.txt")
+        self.free_email_suffixes = ["@gmail.com", "@yahoo.com", "@aol.com", "@hotmail.com"]
 
-    def email(self, name=None):
-        email_suffix = random.choice(self.email_suffixes)
+    def email(self, name=None, free_email_suffix=None):
+        email_suffix = free_email_suffix or random.choice(self.email_suffixes)
         if name:
-            return self.get_email_prefix(name) + email_suffix
+            return self.__get_email_prefix(name) + email_suffix
         else:
-            return self.get_email_prefix(random.choice(self.names)) + email_suffix
+            return self.__get_email_prefix(random.choice(self.names)) + email_suffix
 
     def domain_name(self):
         return random.choice(self.email_suffixes)[1::]
@@ -32,14 +33,13 @@ class Internet(Name):
         dot_idx = domain_suffix.index(".")
         return domain_suffix[dot_idx+1::]
 
-    def free_email(self):
-        free_emails = ["@gmail", "@yahoo", "@aol", "@hotmail"]
-        return self.get_email_prefix(random.choice(self.names)) + random.choice(free_emails)
+    def free_email(self, name=None):
+        return self.email(name, random.choice(self.free_email_suffixes))
 
     def user_name(self):
-        return self.get_email_prefix(random.choice(self.names))
+        return self.__get_email_prefix(random.choice(self.names))
 
-    def get_email_prefix(self, name):
+    def __get_email_prefix(self, name):
         """takes a name and turns it into email format.
         Args: the string representing the name
         Returns: the reversed string seperated by .
