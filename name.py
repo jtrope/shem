@@ -2,7 +2,7 @@ from base import Base
 import re
 import random
 
-class Name(Base):
+class Name(Conflict1):
     def __init__(self):
         self.prefixes = ["Dr.", "Mrs.", "Mr.", "Ms.", "Miss"]
         self.suffixes = ["DDS", "Jr.", "Sr.", "DVM", "PhD", "MD", "V", "IV", "I", "II", "III"]
