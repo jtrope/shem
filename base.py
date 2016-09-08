@@ -1,7 +1,7 @@
 import logging
 import re
 
-class Base(Conflict1):
+class Base(Conflict2):
   def get_file_data(self, file_path):
     """returns list of non blank names from file"""
     file = self.open_file(file_path)
