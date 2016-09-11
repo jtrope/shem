@@ -1,6 +1,7 @@
 require_relative 'get_data'
 
 files_to_write = [
+  "POTNETIAL CONFLICT",	       
   "full_names",
   "email_suffixes",
   "cities",
