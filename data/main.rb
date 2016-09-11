@@ -6,7 +6,8 @@ files_to_write = [
   "cities",
   "street_addresses",
   "states",
-  "states_abbr"
+  "states_abbr",
+  "creating_conflict"
 ]
 
 file_generator(files_to_write)
