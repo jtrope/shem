@@ -1,6 +1,8 @@
 from name import Name
 import random
 
+# SHOULD NOT CAUSE CONFLICT.
+
 class Internet(Name):
     def __init__(self):
         Name.__init__(self)
